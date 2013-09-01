@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Johnny Five Intro</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+
+<div class="slides">
+
+
+<!-- TITLE -->
+<section>
+	<h1><br>ARDUINOS<br>AND<br>JAVASCRIPT</h1>
+</section>
+<!-- EO TITLE -->
+
+
+
+<!-- Who we are -->
+<section>
+	<div style="display:inline-block; margin:50px;">
+		<a href="https://twitter.com/mdobs">
+			<img src="https://si0.twimg.com/profile_images/3725248935/f52e2357cc17bdc8406591d18db65486.jpeg">
+			<br>
+			<b>@mdobs</b>
+		</a>
+	</div>
+
+	<div style="display:inline-block;margin:50px;">
+		<a href="https://twitter.com/adammagaluk">
+			<img src="https://si0.twimg.com/profile_images/378800000391729297/313d84992c62e932f21d3bd979f9d2cf.jpeg">
+			<br>
+			<b>@adammagaluk</b>
+		</a>
+	</div>
+</section>
+<!-- EO who we are -->
+
+
+<!-- Intro to Arduino -->
+<section>
+	
+	<!-- Intro to Arduino -->
+	<section>
+  	<img src="http://www.csc.kth.se/utbildning/kth/kurser/DH2400/interak08/arduino_images/arduino-layoyut.gif">
+  </section>
+  <!-- EO Intro to Arduino -->
+
+  <!-- Examples of Arduino projects -->
+  <section>
+  	<h2>WHAT CAN YOU DO WITH IT?</h2>
+		<div class="absolute-element" style="position: absolute; width: 445px; height: 361px; z-index: 4; left: 491px; top: 93px; max-height: none; max-width: none;">
+			<img src="http://interface.khm.de/wp-content/uploads/2008/12/thm-mit-hand.jpg" style="width: 363.6050955414013px; height: 292px; max-height: none; max-width: none;">
+		</div>
+			<img src="http://www.instructables.com/files/deriv/F47/U5UU/G6MPFGNA/F47U5UUG6MPFGNA.LARGE.jpg" style="width: 294.85897435897436px; height: 218px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 76px; top: 153px;" class="absolute-element">
+      <img src="http://arducopter.googlecode.com/svn/images/ACQuad_med.jpg" style="width: 522px; height: 232px; max-height: none; max-width: none; position: absolute; z-index: 4; left: 134px; top: 397px;" class="absolute-element">
+  </section>
+  <!-- EO Examples of Arduino projects -->
+
+</section>
+<!-- EO Intro to Arduino -->
+
+
+<!-- intro to node and j5 -->
+<section>
+
+	<!-- intro to j5 -->
+    <section>
+<img src="http://allgirlhacknight.github.io/img/johnny-five.png" class="absolute-element" style="position: absolute; max-height: none; max-width: none; width: 557px; height: 557px; z-index: 4; left: 200px; top: 53px;">
+    </section>
+    <!-- EO intro to j5 -->
+
+
+  <!-- Getting setup -->  
+	<section>
+		<h2>Getting Setup</h2>
+		<div>Install Node.js</div>
+		<div>
+		<a href="http://nodejs.org/download/">http://nodejs.org/download/</a>
+		</div>
+		<div>
+			<br>
+		</div>
+		<div>Install Arduino IDE</div>
+		<div>
+		    <a href="http://arduino.cc/en/Guide/HomePage">http://arduino.cc/en/Guide/HomePage</a>
+		</div>
+		<div>
+			<br>
+		</div>
+		<div>Install Johnny Five</div>
+		<div>
+			<span style="background-color: rgb(102, 102, 102);">npm install johnny-five</span>
+		</div>
+	</section>
+	<!-- EO Getting setup -->
+
+</section>
+<!-- EO intro to node and j5 -->
+
+<!-- Explanation of parts -->
+<section>
+	<section>
+		<img src="images/BreadBoard-1.jpg" >
+	</section>
+
+	<section>
+		<img src="images/electronics_led_diagram.png" >
+	</section>
+
+	<section>
+		<img src="images/resistor.png" >
+	</section>
+
+</section>
+<!-- EO Explanation of parts -->
+
+
+
+<!-- Pic for blink -->
+<section>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/80967/ExampleCircuit_bb.gif" style="width: 620px; height: 588px; max-height: none; max-width: none;">
+<div class="absolute-element" style="position: absolute; width: 314px; height: 92px; z-index: 4; left: 470px; top: 65px;">Short leg to ground<br>Long leg to pin 13</div>
+</section>
+<!-- EO Pic for blink -->
+
+<!-- Code for blink -->
+<section>
+	<div>
+	<pre style="font-size: 30px;"><code>
+var five = require("johnny-five"),
+    board = new five.Board();
+ 
+board.on("ready", function() {
+    // Blink with 1000ms intervals
+    (new five.Led(13)).strobe(1000);
+});
+
+</code></pre>
+	</div>
+</section>
+<!-- EO code for blink -->
+
+
+<!-- pic for button -->
+<section>
+<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/81333/button.png" style="width: 1130.4242424964905px; height: 443.0323256311438px; max-height: none; max-width: none;">
+</section>
+<!-- EO pic for button -->
+
+
+<!-- Code for button -->
+<section>
+	<div style="max-height: none; max-width: none;">
+	<pre style="font-size: 28px;"><code style="max-height: none; max-width: none;">
+var five = require("johnny-five"),
+    board = new five.Board();
+
+board.on("ready", function() {
+
+  // Create a new `button` hardware instance.
+  var button = new five.Button(8);
+
+  // "down" the button is pressed
+  button.on("down", function() {
+    console.log("button down!!");
+  });
+
+  // "up" the button is released
+  button.on("up", function() {
+    console.log("button up!!");
+  });
+});
+
+</code></pre>
+	</div>
+</section>
+<!-- EO COde for button -->
+
+
+
+<!-- PIC for pot -->
+<section>
+	<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/81410/AnalogReadSerial_BB.gif">
+</section>
+<!-- EO PIC for pot -->
+
+
+<!-- Code for Pot -->
+<section>
+	<div>
+	<pre style="font-size: 28px;"><code style="max-height: none; max-width: none;">
+var five = require("johnny-five");
+var board = new five.Board();
+ 
+board.on("ready", function() {
+ 
+  // Create a new `potentiometer`
+  var potentiometer = new five.Sensor({
+    pin: "A0",
+    freq: 250
+  });
+ 
+  //read get the current reading from the pot
+  potentiometer.on("read", function() {
+    console.log("Value="+this.value);
+  });
+
+});
+
+</code></pre>
+	</div>
+</section>
+<!-- EO Code for Pot -->
+
+
+
+<!-- Servo PICS -->
+<section>
+    <!-- What is a servo -->	
+    <section>
+      <h2>What's A Servo</h2>
+			<div>
+				<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/81442/Servo_Animation.gif" style="width: 414.6121529935413px; height: 524.4242424964905px; max-height: none; max-width: none;">
+			</div>
+    </section>
+
+    <!-- Schematic for servo -->
+    <section>
+    	<div>
+    		<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/81443/servo.gif" style="width: 993.1471157471728px; height: 574.4242424964905px; max-height: none; max-width: none;">
+			</div>
+		</section>
+
+</section>
+<!-- EO Servo PICS -->
+
+
+
+<!-- Code for servo -->
+<section>
+<div>
+<pre style="font-size: 28px;"><code style="max-height: none; max-width: none;">
+var five = require("johnny-five"),
+    board, servo;
+
+board = new five.Board();
+board.on("ready", function() {
+
+  // Create a new `servo` hardware instance.
+  servo = new five.Servo(10);
+
+  servo.sweep();
+
+  // "move" events fire after a successful move.
+  servo.on("move", function( err, degrees ) {
+    console.log( "move", degrees );
+  });
+
+});
+
+</code></pre>
+</div>
+</section>
+<!-- EO Code for servo -->
+
+
+<!-- Pic for pot and servo -->
+<section> 
+	<div>
+	<img src="https://s3.amazonaws.com/media-p.slid.es/uploads/adammagaluk/images/81502/servo_and_pot.gif" style="width: 996.1996260686072px; height: 399.4242424964905px; max-height: none; max-width: none;">
+	</div>
+</section> 
+<!-- EO pic for pot and servo-->
+
+
+<!-- Code For Pot and Servo -->
+<section>
+	<div>
+	<pre style="font-size: 24px;"><code style="max-height: none; max-width: none;">
+var five = require("johnny-five"),
+    board = new five.Board();
+
+board.on("ready", function() {
+ 
+  // Create a new `potentiometer` hardware instance.
+  var potentiometer = new five.Sensor({
+    pin: "A0",
+    freq: 10
+  });
+
+  var servo = new five.Servo(10);
+
+  // "read" get the current reading from the potentiometer
+  potentiometer.on("read", function() {
+    // convert [0,1023] -&gt; [-180,180]
+    var deg = (this.value * 360) / 1023 - 180;
+    servo.move(Math.round(deg));
+  });
+
+});
+
+	</code></pre>
+	</div>
+</section>
+<!-- EO Code For Pot and Servo -->
+
+
+<!-- End and resources -->
+<section>
+	<h2>Resources</h2>
+
+	<div>
+	<b>Class Examples</b><br>
+	<a href="https://github.com/adammagaluk/2013-arduino-class/">https://github.com/adammagaluk/2013-arduino-class/</a>
+	</div>
+	<div>
+	<b>Johnny Five</b><br>
+	<a href="https://github.com/rwaldron/johnny-five/">https://github.com/rwaldron/johnny-five/</a>
+	</div>
+	<div>
+	<b>Node.js</b><br>
+	<a href="http://nodejs.org/">http://nodejs.org/</a>
+	</div>
+	<div>
+	<b>Arduino</b><br>
+	<a href="http://arduino.cc/">http://arduino.cc/</a>
+	</div>
+	<div>
+	<b>Hardware Supplies</b><br>
+	<a href="http://www.adafruit.com/">http://www.adafruit.com/</a><br>
+	<a href="http://sparkfun.com/">http://sparkfun.com/</a>
+	</div>
+
+</section>
+<!-- EO End and resources  -->
+
+
+</div> <!-- End of slides -->
+
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme || 'night', // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
