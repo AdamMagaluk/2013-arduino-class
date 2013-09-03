@@ -9,6 +9,7 @@ with slide show first install grunt and run a local `npm install` then run
 
 The code directory contains all examples in the presentation.
 
+[View Slides](http://adammagaluk.github.io/2013-arduino-class/#/)
 
 ## Resources
   
